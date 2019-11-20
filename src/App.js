@@ -7,7 +7,6 @@ import Scoreboard from './components/Scoreboard'
 function App() {
   return (
     <div className="App">
-      {/*<Title content="This is some content" /> */}
       <Scoreboard />
     </div>
   );
