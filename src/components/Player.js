@@ -9,15 +9,15 @@ class Player extends Component {
     score: PropTypes.number.isRequired,
     incrementScore: PropTypes.func.isRequired
   };
-  handleClick = () => {
-    this.props.incrementScore(this.props.id)
-  }
+  // handleClick = () => {
+  //   this.props.incrementScore(this.props.id)
+  // }
   render() {
     return (
       <li className="player">
         <p className="name">{this.props.name}</p>
         <p className="score">{this.props.score}</p>
-        <button onClick={this.handleClick}>+</button>
+        <button onClick={() => this.props.incrementScore(this.props.id)}>+</button>
       </li>
     );
   }

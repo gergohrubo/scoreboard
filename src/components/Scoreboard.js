@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Player from "./Player";
+import AddPlayer from "./AddPlayer";
 import "./Scoreboard.css";
 
 export default class Scoreboard extends Component {
@@ -19,6 +20,16 @@ export default class Scoreboard extends Component {
       ))
     });
   }
+  addPlayer = (name) => {
+    const player = {
+      id: Math.round(Math.random() * 100000),
+      name,
+      score: 0
+    }
+    this.setState({
+      players: this.state.players.concat(player)
+    })
+  }
   render() {
     return (
       <div className="scoreboard">
@@ -32,6 +43,7 @@ export default class Scoreboard extends Component {
               ))
           }
         </ul>
+        <AddPlayer addPlayer={this.addPlayer} />
       </div>
     );
   }
