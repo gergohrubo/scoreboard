@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Player from "./Player";
+import "./Scoreboard.css";
 
 export default class Scoreboard extends Component {
   state = {
@@ -9,6 +10,15 @@ export default class Scoreboard extends Component {
       { id: 3, name: "Rein", score: 4 }
     ]
   };
+  incrementScoreOfPlayer = id => {
+    this.setState({
+      players: this.state.players.map(player => (
+        player.id === id
+          ? { ...player, score: player.score + 1 }
+          : player
+      ))
+    });
+  }
   render() {
     return (
       <div className="scoreboard">
@@ -18,7 +28,7 @@ export default class Scoreboard extends Component {
             [...this.state.players]
               .sort((a, b) => b.score - a.score)
               .map(player => (
-                <Player {...player} key={player.id} />
+                <Player {...player} key={player.id} incrementScore={this.incrementScoreOfPlayer} />
               ))
           }
         </ul>
